@@ -16,7 +16,23 @@ import os
 
 # initial_node = np.array([[7,2,3],[1,0,6],[5,8,4]])
 # initial_node_mat = np.array([[7,2,3],[1,0,6],[5,8,4]])
-
+def is_Node_Solvable(node):
+    node_list = np.reshape(node, 9)
+    counter_states = 0
+    for i in range(9):
+        if not node_list[i] == 0:
+            check_elem = node_list[i]
+            for x in range(i + 1, 9):
+                if check_elem < node_list[x] or node_list[x] == 0:
+                    continue
+                else:
+                    counter_states += 1
+    if counter_states % 2 == 0:
+        print("The entered puzzle is solvable, finding optimal solution now.")
+        return True
+    else:
+        print("The entered puzzle is insolvable. \nExiting the game!!. \nBye Bye!!")
+        exit(0)
 def Get_User_Input():
     print("Enter the values of input node in the range [0-8] without repetition :\n")
     flag = False
@@ -32,16 +48,16 @@ def Get_User_Input():
                 flag = False
                 print("Entered input is out of bounds. Please enter a valid input!!")
                 break
-
-
             else:
                 flag =True
                 final_input[i] = np.array(int(input_val))
     return np.reshape(final_input,(3,3))
+inp = False
+while inp is False:
+    initial_node = Get_User_Input()
+    initial_node_mat = initial_node.copy()
+    inp = is_Node_Solvable(initial_node)
 
-
-initial_node = Get_User_Input()
-initial_node_mat = initial_node.copy()
 # Current_Node = initial_node.copy()
 def Convert_int_to_num(a,b,c,d,e,f,g,h,i):
     number= a*100000000+b*10000000+c*1000000+d*100000+e*10000+f*1000+g*100+h*10+i
@@ -59,6 +75,7 @@ Parent_dict = {}
 Child_dict = {}
 test_child_dict = {}
 FinalNodeList =[]
+node_info = []
 # print(len(initial_node[0]))
 def Find_Blank_Space(node):
     row,col = np.shape(node)
@@ -102,6 +119,7 @@ def Move_Node_Up (Local_Current_Node,Queue,iter):
             Child_Node.append(Local_Current_Node)
             Queue.append(Local_Current_Node)
             Child_dict.update({iter: [Local_Current_Node]})
+            node_info.append(iter)
             temp_child_list.append(Local_Current_Node)
         else:
             Local_Current_Node[i][j], Local_Current_Node[i - 1][j] = swap(Local_Current_Node[i][j], Local_Current_Node[i - 1][j])
@@ -129,6 +147,7 @@ def Move_Node_Down (Local_Current_Node,Queue,iter):
                 Goal_Reached = True
             Child_Node.append(Local_Current_Node)
             Child_dict.update({iter: [Local_Current_Node]})
+            node_info.append(iter)
             temp_child_list.append(Local_Current_Node)
             Queue.append(Local_Current_Node)
         else:
@@ -158,6 +177,7 @@ def Move_Node_Left (Local_Current_Node,Queue,iter):
             Child_Node.append(Local_Current_Node)
             temp_child_list.append(Local_Current_Node)
             Child_dict.update({iter: [Local_Current_Node]})
+            node_info.append(iter)
             Queue.append(Local_Current_Node)
         else:
             Local_Current_Node[i][j], Local_Current_Node[i][j - 1] = swap(Local_Current_Node[i][j], Local_Current_Node[i][j - 1])
@@ -186,6 +206,7 @@ def Move_Node_Right (Local_Current_Node,Queue,iter):
             Child_Node.append(Local_Current_Node)
             temp_child_list.append(Local_Current_Node)
             Child_dict.update({iter: [Local_Current_Node]})
+            node_info.append(iter)
             Queue.append(Local_Current_Node)
         else:
             Local_Current_Node[i][j], Local_Current_Node[i][j + 1] = swap(Local_Current_Node[i][j], Local_Current_Node[i][j + 1])
@@ -317,17 +338,66 @@ def Back_Tracking(Parent_dict,test_child_dict,FinalValue,InitialValue):
             if val_found is True:
                 break
         print("UPDATE_VALue::::::::::::::::", updated_val)
+
         if np.array_equal(updated_val,initial_node_mat):
+
+
             break
 
 Back_Tracking(Parent_dict,test_child_dict,Goal_Node_Mat,initial_node_mat)
-print("No of Steps :",len(FinalNodeList)-1)
-if os.path.exists("Final_Node_info.txt"):
-    os.remove("Final_Node_info.txt")
-f = open("Final_Node_info.txt", "a")
+FinalNodeList.reverse()
+FinalNodeList.append(Goal_Node_Mat)
+if os.path.exists("Path_Node_info.txt"):
+    os.remove("Path_Node_info.txt")
+f = open("Path_Node_info.txt", "a")
 f.write(str(FinalNodeList)+"\n")
 f.close()
 
+
+print('final list:',FinalNodeList)
+
+print("No of Steps :",len(FinalNodeList))
+
+def Generate_Text_Files(FinalNodeList,test_child_dict,):
+    if os.path.exists("nodePath.txt"):
+        os.remove("nodePath.txt")
+    f = open("nodePath.txt", "a")
+    for i in FinalNodeList:
+        for j in range(len(i.flatten())):
+            x = (np.transpose(i)).flatten()
+            f.write(str(int(x[j])) + " ")
+        f.write("\n")
+    f.close()
+
+    if os.path.exists("Nodes.txt"):
+        os.remove("Nodes.txt")
+    f = open("Nodes.txt", "a")
+    # for i in range (len(test_child_dict))
+    for i in range(0,len(test_child_dict)):
+        for val in test_child_dict.get(i):
+            # print("val",val)
+            for j in range(len(val.flatten())):
+                x = (np.transpose(val)).flatten()
+                f.write(str(x[j] )+ " ")
+            f.write("\n")
+    f.close()
+
+    if os.path.exists("NodesInfo.txt"):
+        os.remove("NodesInfo.txt")
+    f = open("NodesInfo.txt", "a")
+    # for i in range (len(test_child_dict))
+    # for i in range(0,len(test_child_dict)):
+    count= 0
+    for val in test_child_dict.keys():
+        # print("val",val+1)
+
+        # for j in range(len(val.flatten())):
+        # x = (np.transpose(val)).flatten()
+        f.write(str(val+1 )+ " " + str(node_info[count]) +" " +str(0))
+        count = count+1
+        f.write("\n")
+    f.close()
+Generate_Text_Files(FinalNodeList,test_child_dict)
 end_time = time.time()
 total_time =  end_time -start_time
 print('Total Time:',total_time)
