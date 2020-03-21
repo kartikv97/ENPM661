@@ -19,13 +19,18 @@ python -version 3
 Numpy
 math
 matplotlib
+cv2
+glob
+time
 
 ### Run Code
 Enter the following to run the Astar for rigid robot.
 
 ```
 cd [to 'codes' directory]
-python3 Astar_rigid.py
+python3 Astar_rigid.py  for Linux 
+
+python Astar_rigid.py   for Windows 
 ```
 
 ### Input Instruction:
@@ -48,6 +53,11 @@ Enter the step size in range 1-10:
 Enter the start angle in degrees:
 ```
 For all these prompt please enter integers between 0 and 299 for X-coordinate and 0 and 199 for Y-coordinate.
+
+Step Size: Enter value in range 1 to 10
+
+Angle: Enter the Start angle (robot orientation) in degrees in the range 0 to 360
+
 Please enter the elements of the matrix row wise typing enter
 
 
@@ -55,6 +65,7 @@ Please enter the elements of the matrix row wise typing enter
 After running the python file
 ```
 Enter the Radius of the Rigid body:5
+
 Enter the Clearance required for the Rigid body:5
 
 Enter the value of Start Node X co-ordinate:50
@@ -77,17 +88,17 @@ Enter the value of Goal Node Y co-ordinate:150
 Exploring nodes...
 ```
 ```
-Cost took to reach the goal is: 395.64675298172733
+Cost took to reach the goal is: 156.20499351813308
 Backtracking...
-Total time taken 160.9800910949707
+Total time taken 200 to 300 seconds
 ```
-For worst case time taken for rigid robot is 201.9800910949707 seconds.
+
+### Output Video
+The video was sampled at a frame rate of 500 frames per second and hence all the explored nodes are not displayed in the simulation video. This was done so as to generate the output video in a reasonable amount of time. An image of the final output is also attached which displays all the visited nodes.
 
 ### Note
 For small distances, after finding the goal point the matplotlib will immediately start the simulation and reach the goal point. The goal exploration is not clearly see for small distances. For large distances it is clearly seen.
 
-### Obstacle assumption:
-In obstacle space, for rectangle obstacle which is faced at an angle of 30 degrees, we were getting decimal points as coordinates. So we round that to integer as pixel values cannot be decimals. As a result, when you give 10 or greater than 10 as clearance, the shape of the rectangle may differ.
 
 ### Commits
 Due to many test codes we could not make commits to the github repository.
