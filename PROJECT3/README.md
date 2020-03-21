@@ -1,4 +1,4 @@
-# Implementation-of-A star -algorithm
+# Implementation-of- A-Star -algorithm
 ### Description
 Implementation of A* algorithm is tested on a obstacle space for rigid robot. The robot will maneuver through the obstacle space to reach the goal point with minimum cost. For rigid robot, the dimension of the robot is also considered and world space is converted into configuration space by increasing the scale of the obstacles and converting the rigid robot into point robot.
 
@@ -28,9 +28,9 @@ Enter the following to run the Astar for rigid robot.
 
 ```
 cd [to 'codes' directory]
-python3 Astar_rigid.py  for Linux 
+python3 Astar_rigid.py  for Linux   --updated filename::use  Astar_rigid_with_weight.py to run second code
 
-python Astar_rigid.py   for Windows 
+python Astar_rigid.py   for Windows  --updated filename::use  Astar_rigid_with_weight.py to run second code
 ```
 
 ### Input Instruction:
@@ -90,11 +90,16 @@ Exploring nodes...
 ```
 Cost took to reach the goal is: 156.20499351813308
 Backtracking...
-Total time taken 200 to 300 seconds
+Total time taken 200 to 300 seconds -- updated code::The new code runtime is 10 t0 20 seconds(video generation takes 2+ hours).
 ```
 
 ### Output Video
 The video was sampled at a frame rate of 500 frames per second and hence all the explored nodes are not displayed in the simulation video. This was done so as to generate the output video in a reasonable amount of time. An image of the final output is also attached which displays all the visited nodes.
+--updated output:- added weight parameter to the heuristic function (2*Euclidean distance) to generate the new output attached in this file. 
+
+### Output Images
+![Output 1 without weight](Final_output_img.PNG)
+![Output2 with weight](Output_2.PNG)
 
 ### Note
 For small distances, after finding the goal point the matplotlib will immediately start the simulation and reach the goal point. The goal exploration is not clearly see for small distances. For large distances it is clearly seen.
