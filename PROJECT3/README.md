@@ -1,4 +1,4 @@
-# Implementation-of-Dijkstra-algorithm
+# Implementation-of-A star -algorithm
 ### Description
 Implementation of A* algorithm is tested on a obstacle space for rigid robot. The robot will maneuver through the obstacle space to reach the goal point with minimum cost. For rigid robot, the dimension of the robot is also considered and world space is converted into configuration space by increasing the scale of the obstacles and converting the rigid robot into point robot.
 
