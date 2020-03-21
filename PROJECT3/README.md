@@ -98,8 +98,8 @@ The video was sampled at a frame rate of 500 frames per second and hence all the
 --updated output:- added weight parameter to the heuristic function (2*Euclidean distance) to generate the new output attached in this file. 
 
 ### Output Images
-![Output 1 without weight.](Final_output_img.PNG)
-![Output2 with weight.](Output_2.PNG)
+![Output 1 without weight.](Final_output_img.png)
+![Output2 with weight.](Output_2.png)
 
 ### Note
 For small distances, after finding the goal point the matplotlib will immediately start the simulation and reach the goal point. The goal exploration is not clearly see for small distances. For large distances it is clearly seen.
