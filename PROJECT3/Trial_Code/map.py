@@ -104,7 +104,7 @@ def check_obstacle(x,y):
 
 fig = plt.figure()
 fig.set_dpi(100)
-fig.set_size_inches(8.5, 6)
+fig.set_size_inches(5, 5)
 fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
 axis = fig.add_subplot(xlim=(-width, width), ylim=(-height, height))
 circle1 = plt.Circle((coords_Circle1[1]), coords_Circle1[0], fc=None)
