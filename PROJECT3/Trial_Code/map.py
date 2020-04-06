@@ -68,35 +68,22 @@ def check_obstacle(x,y):
         print("obstacle found")
         return True
     ##################### square1##################
-    Square1 = []
-    for i in range(len(coords_square1)):
-        if i == len(coords_square1) - 1:
-            Square1.append(get_Line_Equation(coords_square1[i], coords_square1[0], x, y))
-            break
-        Square1.append(get_Line_Equation(coords_square1[i], coords_square1[i + 1], x, y))
-    if (Square1[0] <= 0 and Square1[1] <= 0 and Square1[2] >= 0 and Square1[3] >= 0):
+    if (y >= -0.75 - totalClearance) and (y <= 0.75 + totalClearance) and (x >= -4.75 - totalClearance) and (x <= -3.25 + totalClearance):
         print("obstacle found")
+
         return True
     ##################### square2 ########################
-    Square2 = []
-    for i in range(len(coords_square2)):
-        if i == len(coords_square2) - 1:
-            Square2.append(get_Line_Equation(coords_square2[i], coords_square2[0], x, y))
-            break
-        Square2.append(get_Line_Equation(coords_square2[i], coords_square2[i + 1], x, y))
-    if (Square2[0] <= 0 and Square2[1] <= 0 and Square2[2] >= 0 and Square2[3] >= 0):
+    if (y >= -0.75 - totalClearance) and (y <= 0.75 + totalClearance) and (x >= 3.25 - totalClearance) and (
+            x <= 4.75 + totalClearance):
         print("obstacle found")
+
         return True
 
     ###################### square3 ############################
-    Square3 = []
-    for i in range(len(coords_square3)):
-        if i == len(coords_square3) - 1:
-            Square3.append(get_Line_Equation(coords_square3[i], coords_square3[0], x, y))
-            break
-        Square3.append(get_Line_Equation(coords_square3[i], coords_square3[i + 1], x, y))
-    if (Square3[0] <= 0 and Square3[1] <= 0 and Square3[2] >= 0 and Square3[3] >= 0):
+    if (y >= 2.25 - totalClearance) and (y <= 3.75 + totalClearance) and (x >= -2.75 - totalClearance) and (
+            x <= -1.25 + totalClearance):
         print("obstacle found")
+
         return True
     else:
         print("obstacle not found")
