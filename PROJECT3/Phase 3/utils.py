@@ -98,19 +98,36 @@ def calcEuclideanDist(curr_coordinate_x, curr_coordinate_y,goal):
 
 
 # Function to Backtrack from the Goal Node to Start Node
-def backTracking(parent, child):
+def backTracking(parent, child, actions, angles):
 
     # starting from the last parent node
     parentnode = parent[len(parent) - 1]
     childnode = child[len(child) - 1]
+    action_node = actions[len(actions)-1]
+    angle_node = angles[len(angles)-1]
     nodePath = []
+    actionPath =[]
+    angleList = []
+
     nodePath.append(childnode)
+    actionPath.append(action_node)
+    angleList.append(angle_node)
+
+
+    ind = child.index(parentnode)
+    actionPath.append(actions[ind])
+    angleList.append(angles[ind])
     nodePath.append(parentnode)
     while parentnode != (0, 0):
         if parentnode in child:
             index = child.index(parentnode)
             parentnode = parent[index]
             nodePath.append(parentnode)
-    nodePath = nodePath[::-1]
+            actionPath.append(actions[index])
+            angleList.append(angles[index])
 
-    return nodePath
+    actionPath = actionPath[::-1]
+    nodePath = nodePath[::-1]
+    angleList = angleList[::-1]
+
+    return nodePath,actionPath,angleList

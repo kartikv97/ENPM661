@@ -28,6 +28,8 @@ def addNode(newNode):
         if Visited_Nodes_List[int(new_x * 2) - 1][int(new_y * 2) - 1][new_angle] == 0:
             st.parentList.append(newNode.parent)
             st.childList.append((newNode.x, newNode.y))
+            st.ActionList.append(newNode.RPM)
+            st.AngleList.append(newNode.angle)
             st.costList.append(newNode.totalCost)
             # print("ADDED New Node:", newNode.x,newNode.y, newNode.angle)
             # print("visited list location:",int(new_x * 2) - 1, int(new_y * 2) - 1, new_angle - 1)
@@ -58,6 +60,8 @@ def aStar(node, goal, rpm1, rpm2):
         st.nodeList.append(node)
         st.parentList.append((0, 0))
         st.childList.append((node.x, node.y))
+        st.ActionList.append((0,0))
+        st.AngleList.append(node.angle)
         st.costList.append(0)
 
         new_x, new_y, new_angle = generateApproxCoordinates(node)
@@ -174,7 +178,14 @@ else:
 
     if flag is False:
         print("Backtracking...")
-        nodepath = backTracking(st.parentList, st.childList)
+        nodepath, actionPath, angleList = backTracking(st.parentList, st.childList, st.ActionList, st.AngleList)
+        print("nodepath:",nodepath)
+        print("actionpath:", actionPath)
+        print("angleList:", angleList)
+
+        print("length nodepath:", len(nodepath))
+        print("length actionpath:", len(actionPath))
+        print("length angleList:", len(angleList))
 
     simulation = False
 
@@ -363,7 +374,9 @@ else:
 
         # ani = FuncAnimation(fig, update, frames=len(ExploredNodeList) + 1,
         #                     init_func=init, interval=2, blit=True, repeat=True)
-
+        plt.plot(start[0],start[1], color='orange', marker='o', markersize=1)
+        plt.plot(goal[0], goal[1], color='green', marker='o', markersize=1)
+        plt.grid()
         plt.show()
 
 

@@ -43,6 +43,7 @@ def Action(ur,ul,node,goal):
     newNode.x = node.x + dx
     newNode.y = node.y + dy
     newNode.angle = node.angle + d_theta
+    newNode.RPM = (ul,ur)
     if newNode.angle > 360:
         newNode.angle = newNode.angle - 360
     elif newNode.angle < 0:
@@ -74,7 +75,7 @@ def Action(ur,ul,node,goal):
 
 # Function to check if Goal is reached.
 def goalReached(newNode, goal):
-    if (newNode.x - goal[0]) ** 2 + (newNode.y - goal[1]) ** 2 <= (0.25) ** 2:
+    if (newNode.x - goal[0]) ** 2 + (newNode.y - goal[1]) ** 2 <= (0.15) ** 2:
 
         new_x, new_y, new_angle = generateApproxCoordinates(newNode)
         new_angle = int((new_angle * 72) / 360)
