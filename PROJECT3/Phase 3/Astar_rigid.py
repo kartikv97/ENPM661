@@ -425,17 +425,17 @@ else:
 
         ###########################################################################################3
 
-        # for node in st.ExploredNodeList:
-        #     xdata.append(node[0])
-        #     ydata.append(node[1])
-        #     # lns.set_data(xdata, ydata)
-        # p1 = plt.plot([xdata], [ydata], '.', color='brown', markersize=1, label='Explored Nodes')
-        #
-        # for pixel in nodepath:
-        #     x_data.append(pixel[0])
-        #     y_data.append(pixel[1])
-        #     # ln.set_data(x_data, y_data)
-        # p2 = plt.plot([x_data], [y_data], 'k.', markersize=1, label='Optimal Path Nodes')
+        for node in st.ExploredNodeList:
+            xdata.append(node[0])
+            ydata.append(node[1])
+            # lns.set_data(xdata, ydata)
+        p1 = plt.plot([xdata], [ydata], '.', color='brown', markersize=1, label='Explored Nodes')
+
+        for pixel in nodepath:
+            x_data.append(pixel[0])
+            y_data.append(pixel[1])
+            # ln.set_data(x_data, y_data)
+        p2 = plt.plot([x_data], [y_data], 'k.', markersize=1, label='Optimal Path Nodes')
 
 
         ######################################################################
@@ -444,8 +444,9 @@ else:
         p4 = plt.plot(start[0],start[1], color='cyan', marker='o', markersize=1, label="Start Node")
         p5 = plt.plot(goal[0], goal[1], color='cyan', marker='o', markersize=1, label = 'Goal Node')
         plt.grid()
-        # plot(st.ExploredParentNodeList,st.ExploredNodeAngleList,st.ExploredNodeActionList, actionPath, angleList)
 
+        plot(st.ExploredParentNodeList,st.ExploredNodeAngleList,st.ExploredNodeActionList, actionPath, angleList,'Explored')
+        plot(st.ExploredParentNodeList,st.ExploredNodeAngleList,st.ExploredNodeActionList, actionPath, angleList,'Optimal')
         # plt.set_aspect('equal')
         plt.xlim(-7, 7)
         plt.ylim(-7, 7)
@@ -499,18 +500,21 @@ else:
         #         break
         #     node_count = node_count +1
 
-        node_count = 0
-        for node in nodepath:
-            # xdata.append(node[0])
-            # ydata.append(node[0])
-            # try:
-            p1 = plt.plot(node[0], node[1], 'k.', markersize=1, label='Optimal Path Nodes')
-        # plot(st.ExploredParentNodeList, [st.ExploredNodeAngleList[0]],
-        #      st.ExploredNodeActionList[0]], [actionPath[node_count]], [angleList[node_count]], 'Optimal')
-            # except:
-            #     break
-            # node_count = node_count + 1
-        plot(st.ExploredParentNodeList,st.ExploredNodeAngleList,st.ExploredNodeActionList, actionPath, angleList,'Optimal')
+
+
+#####################################################################
+        # node_count = 0
+        # for node in nodepath:
+        #     # xdata.append(node[0])
+        #     # ydata.append(node[0])
+        #     # try:
+        #     p1 = plt.plot(node[0], node[1], 'k.', markersize=1, label='Optimal Path Nodes')
+        # # plot(st.ExploredParentNodeList, [st.ExploredNodeAngleList[0]],
+        # #      st.ExploredNodeActionList[0]], [actionPath[node_count]], [angleList[node_count]], 'Optimal')
+        #     # except:
+        #     #     break
+        #     # node_count = node_count + 1
+        # plot(st.ExploredParentNodeList,st.ExploredNodeAngleList,st.ExploredNodeActionList, actionPath, angleList,'Optimal')
 
 
 
