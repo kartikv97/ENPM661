@@ -1,6 +1,6 @@
 
 class Node:
-    def __init__(self, x, y, totalCost, cTc, cTg, parent, angle, rpm, rpm2, listAngle):
+    def __init__(self, x, y, totalCost, cTc, cTg, parent, angle, rpm, parentAngle, listAngle):
         self.x = x
         self.y = y
         self.totalCost = totalCost
@@ -9,14 +9,14 @@ class Node:
         self.parent = parent
         self.angle = angle
         self.RPM = rpm
-        self.rpm2 = rpm2
+        self.parentAngle = parentAngle
         self.listAngle = listAngle
 
     def __lt__(self, other):
         return  self.totalCost < other.totalCost
 
 def init():
-    global nodeList, parentList, childList, costList, nodeLIST, ExploredNodeList ,ExploredParentNodeList ,ExploredChildNodeList ,masterList, ActionList, AngleList
+    global nodeList, parentList, childList, costList, nodeLIST, ExploredNodeList ,ExploredParentNodeList ,ExploredChildNodeList ,masterList, ActionList, AngleList, parentAngleList,ExploredNodeAngleList,ExploredNodeActionList,test
     nodeList = []
     parentList = []
     childList = []
@@ -28,3 +28,7 @@ def init():
     masterList = []
     ActionList = []
     AngleList = []
+    parentAngleList = []
+    ExploredNodeAngleList = []
+    ExploredNodeActionList = []
+    test=[]

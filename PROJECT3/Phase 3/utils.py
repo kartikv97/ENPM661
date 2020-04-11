@@ -92,13 +92,20 @@ def isNodeVisited(node):
 
 # Function to calculate Euclidean Distance between current node and the goal node.
 def calcEuclideanDist(curr_coordinate_x, curr_coordinate_y,goal):
-    cTg = np.sqrt((curr_coordinate_x-goal[0])**2 + (curr_coordinate_y-goal[1])**2 )
+    cTg = np.sqrt((curr_coordinate_x- goal[0])**2 + (curr_coordinate_y- goal[1])**2 )
     # cTg = abs(goal[0]-curr_coordinate_x)+abs(goal[1]-curr_coordinate_y)                                      # MANHATTAN DISTANCE FORMULA
     return cTg
 
 
 # Function to Backtrack from the Goal Node to Start Node
-def backTracking(parent, child, actions, angles):
+def backTracking(parent, child, actions, angles, ang):
+
+
+    # print("parents:",parent)
+    # print("child:", child)
+    # print("actions:", actions)
+    # print("angles:", angles)
+
 
     # starting from the last parent node
     parentnode = parent[len(parent) - 1]
@@ -111,12 +118,12 @@ def backTracking(parent, child, actions, angles):
 
     nodePath.append(childnode)
     actionPath.append(action_node)
-    angleList.append(angle_node)
+
 
 
     ind = child.index(parentnode)
     actionPath.append(actions[ind])
-    angleList.append(angles[ind])
+    angleList.append(angle_node)
     nodePath.append(parentnode)
     while parentnode != (0, 0):
         if parentnode in child:

@@ -5,7 +5,7 @@ width  = 5
 height = 5
 clearance = input("Enter the Clearance required for the Rigid body:")
 totalClearance = clearance
-totalClearance = int(totalClearance)
+totalClearance = float(0.3)
 print("tot clearance:",totalClearance)
 
 def get_Line_Equation(A,B,x,y):
@@ -23,18 +23,39 @@ def get_Line_Equation(A,B,x,y):
     return line_equation
 
 
-coords_square1 = np.array([(-3.25 - totalClearance, 0.75 + totalClearance),
-                          (-4.75 + totalClearance, 0.75 + totalClearance),
-                          (-4.75 + totalClearance, -0.75 - totalClearance),
-                          (-3.25 - totalClearance, -0.75 - totalClearance)])
-coords_square2 = np.array([(3.25 - totalClearance, 0.75 + totalClearance),
-                          (4.75 + totalClearance, 0.75 + totalClearance),
-                          (4.75 + totalClearance, -0.75- totalClearance),
-                          (3.25 - totalClearance, -0.75 - totalClearance)])
-coords_square3 = np.array([(-2.75 - totalClearance, 3.75 + totalClearance),
-                          (-1.25 + totalClearance, 3.75 + totalClearance),
-                          (-1.25 + totalClearance, 2.25 - totalClearance),
-                          (-2.75 - totalClearance, 2.25 - totalClearance)])
+coords_square1 = np.array([(-3.25 , 0.75 ),
+                          (-4.75 , 0.75 ),
+                          (-4.75 , -0.75 ),
+                          (-3.25 , -0.75 )])
+coords_square2 = np.array([(3.25 , 0.75 ),
+                          (4.75 , 0.75 ),
+                          (4.75 , -0.75),
+                          (3.25 , -0.75 )])
+coords_square3 = np.array([(-2.75 , 3.75 ),
+                          (-1.25 , 3.75 ),
+                          (-1.25 , 2.25 ),
+                          (-2.75 , 2.25 )])
+# coord_inner_boundary = np.array([(5,5),
+#                                (-5,5),
+#                                (-5,-5),
+#                                (5,-5)])
+# coord_outer_boundary = np.array([(5.1,5.1),
+#                                 (-5.1,5.1),
+#                                 (-5.1,-5.1),
+#                                 (5.1,-5.1)])
+# coords_square1 = np.array([(-3.25 - totalClearance, 0.75 + totalClearance),
+#                           (-4.75 + totalClearance, 0.75 + totalClearance),
+#                           (-4.75 + totalClearance, -0.75 - totalClearance),
+#                           (-3.25 - totalClearance, -0.75 - totalClearance)])
+# coords_square2 = np.array([(3.25 - totalClearance, 0.75 + totalClearance),
+#                           (4.75 + totalClearance, 0.75 + totalClearance),
+#                           (4.75 + totalClearance, -0.75- totalClearance),
+#                           (3.25 - totalClearance, -0.75 - totalClearance)])
+# coords_square3 = np.array([(-2.75 - totalClearance, 3.75 + totalClearance),
+#                           (-1.25 + totalClearance, 3.75 + totalClearance),
+#                           (-1.25 + totalClearance, 2.25 - totalClearance),
+#                           (-2.75 - totalClearance, 2.25 - totalClearance)])
+
 """
 coords_square4 = np.array([(-5 , 5 ),
                           (-5 , -5 ),
@@ -45,10 +66,15 @@ coords_square5 = np.array([(-5.1 , 5.1 ),
                           (5.1 , 5.1),
                           (5.1 ,-5.1 )])
                           """
-coords_Circle1 = [(1+totalClearance), (0, 0)]
-coords_Circle2 = [(1+totalClearance), (-2, -3)]
-coords_Circle3 = [(1+totalClearance), (2, -3)]
-coords_Circle4 = [(1+totalClearance), (2, 3)]
+coords_Circle1 = [(1), (0, 0)]
+coords_Circle2 = [(1), (-2, -3)]
+coords_Circle3 = [(1), (2, -3)]
+coords_Circle4 = [(1), (2, 3)]
+
+# coords_Circle1 = [(1+totalClearance), (0, 0)]
+# coords_Circle2 = [(1+totalClearance), (-2, -3)]
+# coords_Circle3 = [(1+totalClearance), (2, -3)]
+# coords_Circle4 = [(1+totalClearance), (2, 3)]
 
 
 def check_Obstacle(x,y):
