@@ -8,7 +8,7 @@ from utils import*
 import init as st
 from map import *
 from How_to_plot_curve import *
-from matplotlib.patches import Rectangle
+from matplotlib.patches import Rectangle, Circle
 
 
 
@@ -298,12 +298,14 @@ else:
         square1 = plt.Polygon(coords_square1)
         square2 = plt.Polygon(coords_square2)
         square3 = plt.Polygon(coords_square3)
+
         # square4 = plt.Polygon(coords_square4)
         # square5 = plt.Polygon(coords_square5)
         obstacles = [circle1, circle2, circle3, circle4, square1, square2, square3]
 
         for obstacle in obstacles:
             plt.gca().add_patch(obstacle)
+
 
 
 
@@ -439,7 +441,10 @@ else:
 
 
         ######################################################################
-        p3 = plt.Circle((goal[0], goal[1]), 0.45, color='green',fc=None, label= 'Goal Area')
+
+        # p3 = plt.Circle((goal[0], goal[1]), 0.45, color='green', fc=None, label='Goal Area')
+
+        plt.gca().add_patch(Circle((goal[0], goal[1]), 0.45,color='green', fill=None))
 
         p4 = plt.plot(start[0],start[1], color='cyan', marker='o', markersize=1, label="Start Node")
         p5 = plt.plot(goal[0], goal[1], color='cyan', marker='o', markersize=1, label = 'Goal Node')
