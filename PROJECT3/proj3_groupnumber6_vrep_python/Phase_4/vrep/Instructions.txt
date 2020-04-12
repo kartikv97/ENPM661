@@ -1,0 +1,32 @@
+Files need to be included in the same folder to have established Remote API bindings
+
+  1. Make sure "vrep.py" and "vrepConst.py" are also present in the same folder as the execution code these files can be found at (programming\remoteApiBindings\python\python)
+
+  2. Check the V-REP version as "remoteApi.dll" is based on either 32-bit or 64-bit version (for windows .dll file is needed , for other OS, other compatible files needed to be placed in the same folder and can be obtained from "programming\remoteApiBindings\lib\lib")
+
+  3. V-REP scene (phase4.ttt)
+
+  4. To include turtlebot model in your V-REP, simply add the model file (Turtlebot2.ttm) inside the main folder of V-REP installation at the location "models\robots\mobile".
+
+Steps to run the code
+
+1. Open V-REP and place the turtle-bot at the start location with initial orientation and initiate the simulation
+
+2. Run the python file
+    -"Phase4.py" in which cost is calculated as the Euclidean distance.
+
+### Note
+Run the simulation in the V-REP first and then run the Phase4.py file. The simulation in the V-REP will only start after the turtle bot reaches the goal.
+
+### Note
+The value of simulation_runtime_per_action for output 1 is 1.09999
+The value of simulation_runtime_per_action for output 2 is 1.14
+### Output Video
+There are 2 video samples along with the code with simulation
+1. Phase4_video1 with initial coordinate (-4,-4) and goal at (0,-3) with initial orientation as 90 degrees. The robot is not reaching the exact coordinates because of the threshold given. In the attached image the followed path can be seen.
+2. Phase4_video2 with initial coordinate (-4,-4) and goal at (3.7,1.7) with initial orientation as 90 degrees. The robot is not reaching the exact coordinates because of the threshold given. In the attached image the followed path can be seen.
+
+### Special Instructions
+For the older V-REP version port number is 1997. Change it in the turtle bot Lua script and in the Phase4.py file.
+
+Under no circumstance stop the V-REP simulation before stopping the python file, if done it will corrupt the file and you will have to re-extract the phase 4 from the original zip. 
