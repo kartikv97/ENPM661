@@ -4,8 +4,8 @@ import numpy as np
 width  = 5
 height = 5
 clearance = input("Enter the Clearance required for the Rigid body:")
-totalClearance = clearance
-totalClearance = float(0.355)
+
+totalClearance = float(0.355) + float (clearance)
 print("tot clearance:",totalClearance)
 
 def get_Line_Equation(A,B,x,y):
