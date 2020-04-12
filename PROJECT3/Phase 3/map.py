@@ -4,9 +4,9 @@ import numpy as np
 width  = 5
 height = 5
 clearance = input("Enter the Clearance required for the Rigid body:")
-totalClearance = clearance
-totalClearance = float(0.3)
-print("tot clearance:",totalClearance)
+
+totalClearance = float(0.355) + float(clearance)
+print("Total clearance( ---according to robot dimensions the default clearance is 0.355) :",totalClearance)
 
 def get_Line_Equation(A,B,x,y):
     x1,y1 = A
