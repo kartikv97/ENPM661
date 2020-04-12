@@ -44,9 +44,9 @@ def plot_curve(Xi, Yi, Thetai, UL, UR, color,linewidth,coord_list,label):
         Yn += 0.5 * r * (UL + UR) * np.sin(Thetan) * dt
         Thetan += (r / L) * (UR - UL) * dt
         p6 = plt.plot([Xs, Xn], [Ys, Yn], color=color, linewidth=linewidth, markersize=5, label= label)
-        # save_fig(frame_count)
-        frame_count = frame_count +1
 
+    frame_count = frame_count +1
+    # save_fig(frame_count)
     # print([Xn, Yn])
     if color == 'blue':
         coord_list.append([Xn, Yn])
@@ -122,9 +122,12 @@ def plot(parentlist, ang, act, actions,angleList, print_flag ):
     if print_flag == 'Explored':
         for action in range(len(act)):
             # action= 2
+            try:
 
-            X1 = plot_curve(parentlist[action][0], parentlist[action][1], ang[action], act[action][0], act[action][1],
-                            'red',0.2,coord_list, "Explored Node Path")  # (0,0,45) hypothetical start configuration
+                X1 = plot_curve(parentlist[action][0], parentlist[action][1], ang[action], act[action][0], act[action][1],
+                                'black',0.2,coord_list, "Explored Node Path")  # (0,0,45) hypothetical start configuration
+            except:
+                break
 
     # nodepath = [(-4, -4), (-3.905, -3.8354551732809568), (-4.0234709637993085, -3.6869134931488707), (-3.9284709637993083, -3.5223686664298275), (-4.046941927598617, -3.3738269862977415), (-3.856941927598617, -3.044737332859655), (-3.761941927598617, -2.8801925061406117), (-3.998883855197234, -2.58310914587644), (-4.117354818996542, -2.4345674657443546), (-3.9273548189965424, -2.105477812306268)]
 
@@ -142,9 +145,13 @@ def plot(parentlist, ang, act, actions,angleList, print_flag ):
         # print("ang:",angleList)
         #
         # try:
+        frame_rate = 1
         for action in range(len(actions)):
-            X2 = plot_curve(coord_list[action][0], coord_list[action][1], angleList[action], actions[action][0],
-                        actions[action][1],'blue',0.5,coord_list, "Optimal Node Path")  # (0,0,45) hypothetical start configuration
+            try:
+                X2 = plot_curve(coord_list[action*frame_rate][0], coord_list[action*frame_rate][1], angleList[action*frame_rate], actions[action*frame_rate][0],
+                            actions[action*frame_rate][1],'blue',0.5,coord_list, "Optimal Node Path")  # (0,0,45) hypothetical start configuration
+            except:
+                break
     # except:
     #     print("ERROR:",action)
 
